@@ -1,8 +1,4 @@
-#Add base image
-					FROM openjdk:8
-					COPY . /var/www/java
-					WORKDIR /var/www/java
-
-
-					RUN ["javac", "Helloworld.java"]
-					ENTRYPOINT ["java","Helloworld"]
+FROM openjdk:8
+ADD target/java-maven-junit-helloworld-2.0-SNAPSHOT.jar java-maven-junit-helloworld-2.0-SNAPSHOT.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","java-maven-junit-helloworld-2.0-SNAPSHOT.jar"]
